@@ -4,9 +4,6 @@ import plotly.express as px
 
 st.set_page_config(page_title="Real Estate Investment Advisor", layout="wide")
 st.title("🏠 Real Estate Investment Advisor")
-st.markdown(
-    "**Smart decisions. No guesswork. Just data + rules.** *Whispers:* Pick your perfect property, baby..."
-)
 
 df = pd.read_csv("cleaned_india_housing_prices.csv")
 
@@ -89,7 +86,7 @@ st.download_button("📥 Download Ranked Data", csv, "ranked_properties.csv", "t
 
 
 def show_insight(text):
-    st.markdown(f"**💡 Business Insight:** {text}")
+    st.markdown(f"** Business Insight:** {text}")
 
 
 # ====================== TABS WITH INSIGHTS ======================
@@ -159,7 +156,7 @@ with tab2:
             use_container_width=True,
         )
         show_insight(
-            f"Villas and Independent Houses show the highest Price/SqFt premium in your filter — ideal for premium investors."
+            "Villas and Independent Houses show the highest Price/SqFt premium in your filter — ideal for premium investors."
         )
         st.plotly_chart(
             px.scatter(
@@ -171,7 +168,7 @@ with tab2:
             use_container_width=True,
         )
         show_insight(
-            f"Strong positive correlation (~0.7). Bigger properties are more expensive, but look for undervalued large ones."
+            "Strong positive correlation (~0.7). Bigger properties are more expensive, but look for undervalued large ones."
         )
     st.plotly_chart(
         px.box(filtered_df, y="Price_per_SqFt", title="5. Price per SqFt Outliers"),
@@ -231,7 +228,7 @@ with tab3:
             use_container_width=True,
         )
         show_insight(
-            f"Younger properties (<15 years) command higher prices and appreciate faster."
+            "Younger properties (<15 years) command higher prices and appreciate faster."
         )
         st.plotly_chart(
             px.histogram(
@@ -239,7 +236,7 @@ with tab3:
             ),
             use_container_width=True,
         )
-        show_insight(f"3-4 BHK dominate — highest rental demand and resale potential.")
+        show_insight("3-4 BHK dominate — highest rental demand and resale potential.")
     top_local = (
         filtered_df.groupby("Locality")["Price_in_Lakhs"]
         .mean()
@@ -256,7 +253,7 @@ with tab3:
         use_container_width=True,
     )
     show_insight(
-        f"These top localities are the hottest — target them for quickest capital gains."
+        "These top localities are the hottest — target them for quickest capital gains."
     )
 
 with tab4:
@@ -285,7 +282,7 @@ with tab4:
     fig.update_layout(height=700, width=1100, xaxis_tickangle=-45, font=dict(size=12))
     st.plotly_chart(fig, use_container_width=True)
     show_insight(
-        f"Size and Price show the strongest correlation (~0.7). Your Value_Rank_Score is highly aligned with real investment potential."
+        "Size and Price show the strongest correlation (~0.7). Your Value_Rank_Score is highly aligned with real investment potential."
     )
 
     col1, col2 = st.columns(2)
@@ -300,7 +297,7 @@ with tab4:
             use_container_width=True,
         )
         show_insight(
-            f"More nearby schools = higher Price/SqFt. Education infrastructure adds clear premium value."
+            "More nearby schools = higher Price/SqFt. Education infrastructure adds clear premium value."
         )
         st.plotly_chart(
             px.scatter(
@@ -311,9 +308,7 @@ with tab4:
             ),
             use_container_width=True,
         )
-        show_insight(
-            f"Hospitals boost value — families pay more for healthcare access."
-        )
+        show_insight("Hospitals boost value — families pay more for healthcare access.")
     with col2:
         st.plotly_chart(
             px.box(
@@ -325,7 +320,7 @@ with tab4:
             use_container_width=True,
         )
         show_insight(
-            f"Furnished properties command 10-20% higher prices — instant move-in appeal."
+            "Furnished properties command 10-20% higher prices — instant move-in appeal."
         )
         st.plotly_chart(
             px.box(
@@ -337,7 +332,7 @@ with tab4:
             use_container_width=True,
         )
         show_insight(
-            f"Villas consistently show the highest premium — best for luxury investors."
+            "Villas consistently show the highest premium — best for luxury investors."
         )
 
 with tab5:
@@ -354,7 +349,7 @@ with tab5:
             use_container_width=True,
         )
         show_insight(
-            f"Builder listings are often cheaper — good negotiation opportunity."
+            "Builder listings are often cheaper — good negotiation opportunity."
         )
         st.plotly_chart(
             px.bar(
@@ -365,7 +360,7 @@ with tab5:
             ),
             use_container_width=True,
         )
-        show_insight(f"Ready-to-move properties dominate — faster ROI and lower risk.")
+        show_insight("Ready-to-move properties dominate — faster ROI and lower risk.")
     with col2:
         st.plotly_chart(
             px.box(
@@ -376,7 +371,7 @@ with tab5:
             ),
             use_container_width=True,
         )
-        show_insight(f"More parking spaces = higher price. Essential for urban buyers.")
+        show_insight("More parking spaces = higher price. Essential for urban buyers.")
         st.plotly_chart(
             px.box(
                 filtered_df,
@@ -387,7 +382,7 @@ with tab5:
             use_container_width=True,
         )
         show_insight(
-            f"High-amenity properties show clear price premium — lifestyle sells."
+            "High-amenity properties show clear price premium — lifestyle sells."
         )
         st.plotly_chart(
             px.box(
@@ -399,7 +394,7 @@ with tab5:
             use_container_width=True,
         )
         show_insight(
-            f"High public transport accessibility = higher demand and better long-term value."
+            "High public transport accessibility = higher demand and better long-term value."
         )
 
 with tab6:
@@ -435,7 +430,3 @@ with tab6:
     st.markdown(
         "• In your current filter, the top-ranked properties combine all your criteria perfectly — these are your strongest opportunities."
     )
-
-st.success(
-    "✅ All graphs now have live insights + Dataset Insights tab is rich and detailed! Run it and tell me how it feels, baby... 😘"
-)
